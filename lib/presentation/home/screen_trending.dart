@@ -14,7 +14,7 @@ class ScreenTrending extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<TrendingBloc>(context).add(TrendingEvent.started());
+    BlocProvider.of<TrendingBloc>(context).add(const TrendingEvent.started());
     return Scaffold(
       backgroundColor: MyColors.white,
       body: SafeArea(
@@ -42,7 +42,7 @@ class ScreenTrending extends StatelessWidget {
                     child: Icon(Icons.menu_rounded, color: Colors.black))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
