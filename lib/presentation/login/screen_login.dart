@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: const [
                             Text.rich(TextSpan(children: [
-                              TextSpan(text: 'Don’t have an account? Sign up'),
+                              TextSpan(text: 'Don’t have an account?'),
                               TextSpan(
                                   text: ' Sign up',
                                   style: TextStyle(
@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 border:
                                     Border.all(color: MyColors.myBorderGray)),
                             child: InternationalPhoneNumberInput(
-                              selectorConfig: SelectorConfig(
+                              selectorConfig: const SelectorConfig(
                                   selectorType:
                                       PhoneInputSelectorType.BOTTOM_SHEET),
                               hintText: 'Enter phone number',
@@ -167,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 22,
                           ),
                           state.isLoading
-                              ? Center(
+                              ? const Center(
                                   child: CircularProgressIndicator(),
                                 )
                               : AppButton(
