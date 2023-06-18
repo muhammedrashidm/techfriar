@@ -16,14 +16,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_AuthEventStarted>((event, emit) {});
     on<_AuthEventLoginButtonPressed>((event, emit) async {
       emit(state.copyWith(isLoading: true));
-      final res = await repository.loginUserWithPhoneAndPassword(
-          phone: event.phone, password: event.password);
-      return res.fold(
-          (l) => emit(state.copyWith(
-              isLoading: false, hasError: true, errorMessage: l.message)),
-          (r) => emit(
-              state.copyWith(isLoading: false, hasError: false, userData: r)));
+      // final res = await repository.loginUserWithPhoneAndPassword(
+      //     phone: event.phone, password: event.password);
+
+      return emit(state.copyWith(
+          isLoading: false,
+          hasError: false,
+          userData: DataModal(
+              user: UserModal.empty().copyWith(
+                  name: 'user', firstName: 'demo', email: 'demo@email.com'),
+              token: 'fake_token')));
+      // return res.fold(
+      //     (l) => emit(state.copyWith(
+      //         isLoading: false, hasError: true, errorMessage: l.message)),
+      //     (r) => emit(
+      //         state.copyWith(isLoading: false, hasError: false, userData: r)));
     });
-    on<_AuthEventRemoveError>((event, emit) => emit(state.copyWith(hasError: false,errorMessage: '')));
+    on<_AuthEventRemoveError>((event, emit) =>
+        emit(state.copyWith(hasError: false, errorMessage: '')));
   }
 }
